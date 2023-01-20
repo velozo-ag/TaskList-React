@@ -12,8 +12,8 @@ function TaskCard({ task }) {
     <div
       className={
         deleting
-          ? "flex flex-row p-3 mt-3 bg-gray-900 bg-opacity-40 border-2 border-gray-900 border-opacity-30 rounded-md transition-all"
-          : "flex flex-row p-3 mt-3 bg-gray-900 bg-opacity-40 border-2 border-gray-900 border-opacity-30 rounded-md scale-50 transition-all"
+          ? "flex snap-center flex-row p-4 my-3 bg-gray-800 bg-opacity-30 border-2 border-gray-900 border-opacity-30 rounded-md shadow-md shadow-black transition-all"
+          : "flex snap-center flex-row p-4 my-3 bg-gray-800 bg-opacity-30 border-2 border-gray-900 border-opacity-30 rounded-md shadow-md shadow-black scale-50 transition-all"
       }
     >
       <div className="basis-11/12">
@@ -22,15 +22,17 @@ function TaskCard({ task }) {
         </h2>
         <p className="text-justify text-clip">{task.description}</p>
       </div>
-      <a
-        className="basis-1/12 bg-red-400 self-center cursor-pointer py-1 pb-2 rounded-lg font-semibold hover:scale-110 active:scale-95 active:bg-red-300 transition-all"
-        onClick={() => {
-          setDeleting(false);
-          deleteTask(task.id);
-        }}
-      >
-        x
-      </a>
+      <div className="flex justify-end p-1 basis-1/12">
+        <a
+          className="shadow-md flex align-middle shadow-black bg-red-400 self-center cursor-pointer py-1 px-3 rounded-lg font-semibold hover:scale-110 active:scale-95 active:bg-red-300 transition-all"
+          onClick={() => {
+            setDeleting(false);
+            deleteTask(task.id);
+          }}
+        >
+          x
+        </a>
+      </div>
     </div>
   );
 }
